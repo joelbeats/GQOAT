@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joel's Crazyness</title>
+<style>
+ body {margin:0;padding-top:60px;display:flex;justify-content:center;align-items:center;height:100vh;background-color:#2b2b2b;flex-direction:column;}
+ #banner {position:fixed;top:0;width:100%;background-color:#2f4f4f;color:white;padding:10px 0;border-bottom:2px solid white;display:flex;align-items:center;}
+ #banner h1 {margin:0;margin-left:10px;font-family:'Arial Rounded MT Bold', Arial, sans-serif;font-size:24px;}
+ #banner img {margin-left:10px;width:40px;height:40px;}
+ #container {display:flex;align-items:center;justify-content:center;position:relative;}
+ button {width:120px;height:120px;border-radius:50px 0 0 50px;background-color:rgb(70, 81, 87);color:rgb(255, 255, 255);border:none;cursor:pointer;font-size:25px;box-shadow:0 8px 16px rgba(0,0,0,0.6);transition:box-shadow 0.2s, background-color 0.2s; margin-right:5px;z-index:1;}
+ button:active {box-shadow:0 2px 2px rgba(0,0,0,0.4);}
+ #textbox {padding:20px;background-color:rgb(63, 82, 79);color:rgb(255, 255, 255);border-radius:0 50px 50px 0;font-family:'Helvetica Neue', sans-serif;font-size:15px;box-shadow:0 8px 16px rgba(0,0,0,0.4);height:80px;width:500px;margin-left:15px;}
+ #text {padding-right:20px;}
+ #author {text-align:right;font-size:12px;margin-top:10px;padding-right:50px;}
+</style>
+</head>
+<body>
+<div id="banner">
+ <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='white'%3E%3Cpath d='M32 0C14.355 0 0 14.355 0 32s14.355 32 32 32 32-14.355 32-32S49.645 0 32 0zm0 58.5C16.016 58.5 5.5 47.984 5.5 32S16.016 5.5 32 5.5 58.5 16.016 58.5 32 47.984 58.5 32 58.5zM21.5 25.5c0-2.486-2.014-4.5-4.5-4.5s-4.5 2.014-4.5 4.5 2.014 4.5 4.5 4.5 4.5-2.014 4.5-4.5zm29 0c0-2.486-2.014-4.5-4.5-4.5s-4.5 2.014-4.5 4.5 2.014 4.5 4.5 4.5 4.5-2.014 4.5-4.5zM44.5 43c-1.104 0-2.105-.459-2.826-1.174-.065-.063-6.591-5.827-11.674-5.827s-11.609 5.764-11.674 5.827A4.001 4.001 0 0119.5 43c-2.21 0-4-1.791-4-4a1 1 0 00-1-1H10a1 1 0 00-1 1c0 4.418 3.582 8 8 8 1.962 0 3.841-.765 5.293-2.121.36-.36 9.116-8.706 10.707-8.706 1.591 0 10.347 8.346 10.707 8.706A7.978 7.978 0 0046 47a1 1 0 001-1 1 1 0 00-1-1z'/%3E%3C/svg%3E" alt="Smiley">
+ <h1>Joel's Crazyness</h1>
+</div>
+<div id="container">
+ <button onclick="switchContent()">Click me!</button>
+ <div id="textbox">
+  <div id="text">The only limit to our realization of tomorrow is our doubts of today.</div>
+  <div id="author">- Franklin D. Roosevelt</div>
+ </div>
+</div>
+<script>
+ const quotes = [
+  {text: "The only limit to our realization of tomorrow is our doubts of today.", author: "Franklin D. Roosevelt"},
+  {text: "Do not go where the path may lead, go instead where there is no path and leave a trail.", author: "Ralph Waldo Emerson"},
+  {text: "In the end, we will remember not the words of our enemies, but the silence of our friends.", author: "Martin Luther King Jr."},
+  {text: "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.", author: "Ralph Waldo Emerson"},
+  {text: "If you tell the truth, you don't have to remember anything.", author: "Mark Twain"},
+  {text: "The best way to predict your future is to create it.", author: "Abraham Lincoln"},
+  {text: "You miss 100% of the shots you don't take.", author: "Wayne Gretzky"},
+  {text: "Life is what happens when you're busy making other plans.", author: "John Lennon"},
+  {text: "The purpose of our lives is to be happy.", author: "Dalai Lama"},
+  {text: "Get busy living or get busy dying.", author: "Stephen King"},
+  {text: "You have within you right now, everything you need to deal with whatever the world can throw at you.", author: "Brian Tracy"},
+  {text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt"},
+  {text: "Your time is limited, so don't waste it living someone else's life.", author: "Steve Jobs"},
+  {text: "The only impossible journey is the one you never begin.", author: "Tony Robbins"},
+  {text: "Success is not how high you have climbed, but how you make a positive difference to the world.", author: "Roy T. Bennett"},
+  {text: "What lies behind us and what lies before us are tiny matters compared to what lies within us.", author: "Ralph Waldo Emerson"},
+  {text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius"},
+  {text: "Go confidently in the direction of your dreams! Live the life you've imagined.", author: "Henry David Thoreau"},
+  {text: "Act as if what you do makes a difference. It does.", author: "William James"},
+  {text: "The only way to do great work is to love what you do.", author: "Steve Jobs"},
+  {text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt"},
+  {text: "Don't watch the clock; do what it does. Keep going.", author: "Sam Levenson"},
+  {text: "You are never too old to set another goal or to dream a new dream.", author: "C.S. Lewis"},
+  {text: "Happiness is not something ready made. It comes from your own actions.", author: "Dalai Lama"},
+  {text: "Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle.", author: "Christian D. Larson"},
+  {text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill"},
+  {text: "Keep your face always toward the sunshine—and shadows will fall behind you.", author: "Walt Whitman"},
+  {text: "You are braver than you believe, stronger than you seem, and smarter than you think.", author: "A.A. Milne"},
+  {text: "Hardships often prepare ordinary people for an extraordinary destiny.", author: "C.S. Lewis"},
+  {text: "You've gotta dance like there's nobody watching, Love like you'll never be hurt, Sing like there's nobody listening, And live like it's heaven on earth.", author: "William W. Purkey"},
+  {text: "Be yourself; everyone else is already taken.", author: "Oscar Wilde"},
+  {text: "Be the change that you wish to see in the world.", author: "Mahatma Gandhi"},
+  {text: "In three words I can sum up everything I've learned about life: it goes on.", author: "Robert Frost"},
+  {text: "No one can make you feel inferior without your consent.", author: "Eleanor Roosevelt"},
+  {text: "To live is the rarest thing in the world. Most people exist, that is all.", author: "Oscar Wilde"},
+  {text: "Yesterday is history, tomorrow is a mystery, today is a gift of God, which is why we call it the present.", author: "Bil Keane"},
+  {text: "I have not failed. I've just found 10,000 ways that won't work.", author: "Thomas A. Edison"},
+  {text: "The only way to do great work is to love what you do.", author: "Steve Jobs"},
+  {text: "The best time to plant a tree was 20 years ago. The second best time is now.", author: "Chinese Proverb"},
+  {text: "Everything has beauty, but not everyone can see.", author: "Confucius"},
+  {text: "It is never too late to be what you might have been.", author: "George Eliot"},
+  {text: "Life is either a daring adventure or nothing at all.", author: "Helen Keller"},
+  {text: "Twenty years from now you will be more disappointed by the things that you didn’t do than by the ones you did do.", author: "Mark Twain"},
+  {text: "The only person you are destined to become is the person you decide to be.", author: "Ralph Waldo Emerson"},
+  {text: "The two most important days in your life are the day you are born and the day you find out why.", author: "Mark Twain"},
+  {text: "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do.", author: "Steve Jobs"},
+  {text: "Whatever you are, be a good one.", author: "Abraham Lincoln"},
+  {text: "We become what we think about most of the time, and that’s the strangest secret.", author: "Earl Nightingale"},
+  {text: "Life is not measured by the number of breaths we take, but by the moments that take our breath away.", author: "Maya Angelou"},
+  {text: "The greatest glory in living lies not in never falling, but in rising every time we fall.", author: "Nelson Mandela"},
+  {text: "The only way to do great work is to love what you do.", author: "Steve Jobs"},
+  {text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius"},
+  {text: "The only limit to our realization of tomorrow is our doubts of today.", author: "Franklin D. Roosevelt"},
+  {text: "You are braver than you believe, stronger than you seem, and smarter than you think.", author: "A.A. Milne"},
+  {text: "Hardships often prepare ordinary people for an extraordinary destiny.", author: "C.S. Lewis"}
+];
+
+function getRandomQuote() {
+return quotes[Math.floor(Math.random() * quotes.length)];
+}
+
+function switchContent() {
+const quote = getRandomQuote();
+document.getElementById('text').innerText = quote.text;
+document.getElementById('author').innerText = '- ' + quote.author;
+switchColor();
+}
+
+function getRandomColor() {
+return '#' + Math.floor(Math.random() * 16777215).toString(16);
+}
+
+/*function switchColor() {
+const randomColor = getRandomColor();
+document.body.style.backgroundColor = randomColor;
+document.getElementById('textbox').style.color = randomColor;
+}*/
+
+</script>
+
+</body>
+</html>
