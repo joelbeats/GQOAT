@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Smiley face -->
+  <circle cx="32" cy="32" r="30" stroke="white" stroke-width="3" fill="transparent"/>
+  <circle cx="22" cy="30" r="4" fill="white"/>
+  <circle cx="42" cy="30" r="4" fill="white"/>
+  <path d="M32 40.5c6.076 0 11-4.924 11-11s-4.924-11-11-11-11 4.924-11 11 4.924 11 11 11z" fill="white"/>
+  <!-- Chat bubble -->
+  <path d="M18 36c0 2.209 1.791 4 4 4h3v7l8-7h8c2.209 0 4-1.791 4-4V8c0-2.209-1.791-4-4-4H22c-2.209 0-4 1.791-4 4v28z" fill="white"/>
+</svg>
